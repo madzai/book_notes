@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new book</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body align="center">
+    <div>
+        <h2>Edit Notes:</h2>
+        <% if (book.notes && book.notes.length > 0) { %>
+            <br>                  
+            <% for (let i = 1; i <= book.notes.length; i++) { %>
+                <form action="/update-note/<%= book.id %>" method="post">
+                    <div class="form-row">
+                        <label for="notes">Note <%= i %></label>
+                        <br>
+                        <input type="hidden" name="update_note_id" value="<%= i %>">
+                        <textarea id="updated_note" name="updated_note"><%= book.notes[i-1] %></textarea>
+                        <br>
+                    </div>
+
+                <button type="submit">Update</button>
+                <button type="submit" form="delete-note-form-<%= i %>">Remove</button>
+
+                </form>
+
+                <form id="delete-note-form-<%= i %>" action="/del-note/<%= book.id %>" method="post" style="display: none;">
+                    <input type="hidden" name="del_note" value="<%= i %>">
+                </form>
+                <br>
+            <% } %>
+        <% } %>
+
+        <h2>Add a new Note</h2>
+        <form action="/add-note/<%= book.id %>" method="post">
+            <!-- <h2>Add a new Note</h2> -->
+            <div class="form-row">
+            <!-- <div> -->
+                <label for="new_note">New note:</label>
+                <br>
+                <textarea id="new_note" name="new_note"></textarea>
+                <br>                
+            </div>
+            <button type="submit">Add</button>
+            <!-- <button type="button" onclick="window.location.href='/book/<%= book.id %>'" style="margin-left: 10px;">Cancel</button> -->
+        </form>
+        
+        <br>
+        <a href="/book/<%= book.id %>">
+            <button class="button">OK</button>
+        </a>  
+    </div>
+</body>
+</html>

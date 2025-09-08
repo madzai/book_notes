@@ -1,0 +1,148 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --border-color: #dee2e6;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.book {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.2s;
+    display: flex;
+    align-items: flex-start;
+    /* align-items: center; */
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.book:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.book-cover img {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.book-details {
+    margin-left: 20px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    max-width: 500px;
+}
+
+.form-row label {
+    flex: 1;
+    min-width: 120px;
+    text-align: right;
+    margin-right: 16px;
+    color: var(--primary-color);
+    font-weight: bold; /* self */
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    flex: 1;
+    min-width: 0;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+form {
+    /* max-width: 520px; */
+    max-width: 1000px;
+    min-width: 700px; /* self */
+    margin: 0 auto;
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-row.button-row {
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.form-row textarea {
+    min-height: 100px;
+    min-width: 500px; /* self */
+    /* resize: vertical; */
+    resize: both;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .form-row label {
+        text-align: left;
+        margin-bottom: 4px;
+        font-weight: bold; /* self */
+    }
+    
+    .book {
+        flex-direction: column;
+    }
+    
+    .book-details {
+        margin-left: 0;
+        margin-top: 16px;
+    }
+}

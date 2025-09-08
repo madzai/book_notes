@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new book</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+    <form action="/add" method="post">
+        <h1 align="center">Add a new book</h1>
+        <br>
+        <div class="form-row">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" required>
+        </div>
+        <!-- <br> -->
+        <div class="form-row">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <!-- <br> -->
+        <div class="form-row">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+        <!-- <br> -->
+        <div class="form-row">
+            <label for="date_read">Date read:</label>
+            <input type="date" id="date_read" name="date_read" placeholder="Optional">
+        </div>
+        <!-- <br> -->
+        <div class="form-row">
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating">
+                <% for(let i=1; i<=10; i++) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="summary">Summary:</label>
+            <textarea id="summary" name="summary" rows="10"></textarea>
+        </div>
+
+        <!-- A form to add a new note to the book -->
+        <div class="form-row">
+            <label for="new_note">Note:</label>
+            <br><br>
+            <textarea id="new_note" name="new_note"></textarea>
+        </div>
+
+        <!-- <br><br> -->
+        <div class="form-row button-row">
+            <button type="submit">Confirm</button>
+            <button type="button" onclick="window.location.href='/'" style="margin-left: 10px;">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+    <h2><%= book.title %> - <%= book.author %></h2>
+    <div>
+        <img src="<%= book.cover %>" alt="book cover">
+        <div> 
+            <p><b>ISBN:</b> <%= book.isbn %></p>
+            <p><b>Title:</b> <%= book.title %></p>
+            <p><b>Author:</b> <%= book.author %></p>
+            <p>
+                <b>Read:</b>
+                <% if (book.date_read) { 
+                    const d = new Date(book.date_read);
+                    const mm = String(d.getMonth() + 1).padStart(2, '0');
+                    const dd = String(d.getDate()).padStart(2, '0');
+                    const yyyy = d.getFullYear();
+                %>
+                <%= mm + '/' + dd + '/' + yyyy %>
+                <% } else { %>
+                    N/A
+                <% } %>
+            </p>
+            <p><b>Rating:</b> <%= book.rating %></p>
+        </div>
+
+            <br>
+            <% if (book.summary && book.summary.length > 0) { %>
+                <h3 align="center">Summary</h3>
+                <p><%= book.summary %></p>
+            <% } %>
+
+            <% if (book.notes && book.notes.length > 0) { %>
+                <br>
+                <h3 align="center">Notes</h3>
+                <% for (let i = 1; i <= book.notes.length; i++) { %>
+                    <p><%= i %>. <%= book.notes[i-1] %></p>
+                <% } %>
+            <% } %>
+
+        </div>
+    </div>
+    <br>
+
+    <div>
+        <button type="submit" form="edit_details">Edit Details</button>
+        <button type="submit" form="edit_summary">Edit Summary</button>
+        <button type="submit" form="edit_notes">Edit Notes</button>
+        <button type="submit" form="delete_book">Remove Book</button>
+        <a href="/"><button class="button">Back</button></a> 
+    </div>
+
+    <br><br>
+    <form id="edit_details" action="/edit-details/<%= book.id %>" method="get" style="display: none;"></form>
+    <form id="edit_summary" action="/edit-summary/<%= book.id %>" method="get" style="display: none;"></form>
+    <form id="edit_notes" action="/edit-notes/<%= book.id %>" method="get" style="display: none;"></form>
+    <form id="delete_book" action="/delete/<%= book.id %>" method="post" style="display: none;"></form>
+</body>
+</html>

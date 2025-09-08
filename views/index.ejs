@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+    <h1>Book List</h1>
+    <a href="/add"><button class="button">Add book</button></a>
+    <br><br>
+    <% for (let book of books) { %>
+        <div class="book">
+            <div class="book-cover">
+                <!-- <a href="/book/<%= book.id %>">
+                    <img src="<%= book.cover %>" alt="book cover">
+                </a> -->
+                <img src="<%= book.cover %>" alt="book cover">
+            </div>
+            <div class="book-details">
+                <h3><%= book.title %> - <%= book.author %></h3>
+                <p>
+                    <b>Read:</b>
+                    <% if (book.date_read) { 
+                        const d = new Date(book.date_read);
+                        const mm = String(d.getMonth() + 1).padStart(2, '0');
+                        const dd = String(d.getDate()).padStart(2, '0');
+                        const yyyy = d.getFullYear();
+                    %>
+                    <%= mm + '/' + dd + '/' + yyyy %>
+                    <% } else { %>
+                        N/A
+                    <% } %>
+                </p>
+                <p><b>Rating:</b> <%= book.rating %></p>
+                <a href="/book/<%= book.id %>">
+                    <button class="button">Read</button>
+                </a>
+            </div>
+        </div>
+        <br>
+    <% } %>
+</body>
+</html>
